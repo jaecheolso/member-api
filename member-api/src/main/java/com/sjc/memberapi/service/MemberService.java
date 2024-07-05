@@ -1,6 +1,6 @@
 package com.sjc.memberapi.service;
 
-import com.sjc.memberapi.dto.GetMemberInfoDto;
+import com.sjc.memberapi.controller.dto.MemberDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -8,12 +8,9 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class MemberService {
 
-    public GetMemberInfoDto getMemberInfo(String UserId) {
-        GetMemberInfoDto getMemberInfoDto = new GetMemberInfoDto();
-        getMemberInfoDto.setUserName("test");
-        getMemberInfoDto.setAge(30);
-        getMemberInfoDto.setSex("중성");
-
-        return getMemberInfoDto;
+    public MemberDto.GetMemberInfoResponse getMemberInfo(MemberDto.GetMemberInfoRequest request) {
+        MemberDto.GetMemberInfoResponse getMemberInfoResponse = new MemberDto.GetMemberInfoResponse();
+        getMemberInfoResponse.setUserId(request.getUserId());
+        return getMemberInfoResponse;
     }
 }

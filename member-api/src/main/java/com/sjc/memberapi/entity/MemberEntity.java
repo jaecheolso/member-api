@@ -6,7 +6,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 @Getter
 @Builder
@@ -22,17 +22,17 @@ public class MemberEntity {
     private Long idx;
 
     @Column(name = "userId", nullable = false)
-    private String user_id;
+    private String userId;
 
     @Column(name = "userName", nullable = false)
-    private String user_name;
+    private String userName;
 
     @Column(name = "passWord", nullable = false)
-    private String pass_word;
+    private String passWord;
 
     @Column(name = "regDate")
-    private Date reg_date;
+    private LocalDateTime regDate;
 
     @Column(name = "modDate")
-    private Date mod_date;
+    private LocalDateTime modDate;
 }
