@@ -3,8 +3,23 @@ package com.sjc.memberapi.controller.dto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
+import java.time.LocalDateTime;
+
 @AllArgsConstructor
 public class MemberDto {
+
+    @Data
+    public static class SetMemberInfoRequest {
+        private String userId;
+        private String userName;
+        private String passWord;
+    }
+
+    @Data
+    public static class SetMemberInfoResponse {
+        private long idx;
+    }
+
     @Data
     public static class GetMemberInfoRequest {
         private String userId;
@@ -13,5 +28,8 @@ public class MemberDto {
     @Data
     public static class GetMemberInfoResponse {
         private String userId;
+        private String userName;
+        private LocalDateTime regDate;
+        private LocalDateTime modDate;
     }
 }
