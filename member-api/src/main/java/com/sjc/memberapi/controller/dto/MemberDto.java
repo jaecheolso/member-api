@@ -21,6 +21,19 @@ public class MemberDto {
     }
 
     @Data
+    public static class UpdateMemberInfoRequest {
+        private long idx;
+        private String userId;
+        private String userName;
+        private String passWord;
+    }
+
+    @Data
+    public static class UpdateMemberInfoResponse {
+        private String result;
+    }
+
+    @Data
     public static class GetMemberInfoRequest {
         private String userId;
     }

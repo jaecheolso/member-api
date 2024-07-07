@@ -4,6 +4,7 @@ import com.sjc.memberapi.controller.dto.MemberDto;
 import com.sjc.memberapi.entity.MemberEntity;
 import com.sjc.memberapi.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -28,10 +29,15 @@ public class MemberService {
         return setMemberInfoResponse;
     }
 
-    public MemberDto.GetMemberInfoResponse getMemberInfo(MemberDto.GetMemberInfoRequest request) {
+    @Transactional
+    public ResponseEntity<MemberDto.UpdateMemberInfoResponse> updateMemberInfo(MemberDto.UpdateMemberInfoRequest request) {
+        return ResponseEntity.ok().body(new MemberDto.UpdateMemberInfoResponse());
+    }
+
+    public MemberDto.GetMemberInfoResponse getMemberInfo(String userId) {
         MemberDto.GetMemberInfoResponse getMemberInfoResponse = new MemberDto.GetMemberInfoResponse();
 
-        MemberEntity memberEntity = memberRepository.findByUserId(request.getUserId());
+        MemberEntity memberEntity = memberRepository.findByUserId(userId);
         getMemberInfoResponse.setUserId(memberEntity.getUserId());
         getMemberInfoResponse.setUserName(memberEntity.getUserName());
         getMemberInfoResponse.setRegDate(memberEntity.getRegDate());
